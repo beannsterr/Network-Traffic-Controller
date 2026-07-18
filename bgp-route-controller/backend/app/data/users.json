@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user-admin",
+    "username": "admin",
+    "role": "Admin",
+    "active": true
+  },
+  {
+    "id": "user-operator",
+    "username": "operator",
+    "role": "Operator",
+    "active": true
+  },
+  {
+    "id": "user-guest",
+    "username": "guest",
+    "role": "User",
+    "active": true
+  },
+  {
+    "id": "bmen",
+    "username": "bmen",
+    "role": "Admin",
+    "active": true
+  }
+]

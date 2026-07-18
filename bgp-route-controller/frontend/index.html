@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BGP Route Controller</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel hero">
+        <div>
+          <h1>BGP Route Controller</h1>
+          <p class="subtitle">Prototype for steering traffic with BGP weight, mitigation actions, and role-based control.</p>
+        </div>
+        <label class="role-picker">
+          <span>Role</span>
+          <select id="active-role">
+            <option>Admin</option>
+            <option>Operator</option>
+            <option>User</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel">
+        <div class="grid">
+          <form id="router-form" class="card">
+            <h2>Add router</h2>
+            <input id="router-id" placeholder="Router ID" required />
+            <input id="router-name" placeholder="Router name" required />
+            <input id="router-host" placeholder="Host/IP" required />
+            <input id="router-vendor" placeholder="Vendor" value="FRRouting" />
+            <button type="submit">Save router</button>
+          </form>
+
+          <form id="policy-form" class="card">
+            <h2>Create policy</h2>
+            <input id="policy-router" placeholder="Router ID" required />
+            <input id="policy-prefix" placeholder="Prefix" required />
+            <input id="policy-neighbor" placeholder="Neighbor" required />
+            <input id="policy-weight" type="number" min="0" max="65535" placeholder="Weight" required />
+            <button type="submit">Queue policy</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Capabilities</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Mitigation actions</h3>
+            <input id="capability-prefix" placeholder="Prefix (e.g. 10.10.10.0/24)" />
+            <input id="capability-router" placeholder="Router ID" />
+            <input id="capability-circuit" placeholder="Circuit (e.g. GigabitEthernet0/0 or ge-0/0/0)" />
+            <select id="capability-select">
+              <option value="divert">Divert</option>
+              <option value="acl-filters">ACL Filters</option>
+              <option value="revert">Revert to Normal</option>
+              <option value="reset">Reset Controller</option>
+            </select>
+            <button id="btn-execute-capability">Execute</button>
+          </div>
+          <div class="card">
+            <h3>Role access</h3>
+            <ul>
+              <li><strong>Admin</strong>: reset system, create/delete users, remove route rules</li>
+              <li><strong>Operator</strong>: divert or revert circuits, install ACL filters</li>
+              <li><strong>User</strong>: view status and create draft policies</li>
+            </ul>
+          </div>
+        </div>
+        <div id="capability-state" class="state-box"></div>
+        <div id="capability-history" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Router Sessions</h2>
+          <span id="session-count">0</span>
+        </div>
+        <div id="session-summary" class="state-box"></div>
+        <div id="router-list" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Policies</h2>
+          <span id="policy-count">0</span>
+        </div>
+        <div id="policy-list" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Command Preview</h2>
+        </div>
+        <div id="command-preview" class="state-box"></div>
+        <div class="section-head">
+          <h2>Workflow Log</h2>
+        </div>
+        <div id="workflow-log" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>User Administration</h2>
+        </div>
+        <form id="user-form" class="card">
+          <input id="user-id" placeholder="User ID" required />
+          <input id="username" placeholder="Username" required />
+          <select id="user-role">
+            <option>Admin</option>
+            <option>Operator</option>
+            <option>User</option>
+          </select>
+          <button type="submit">Create user</button>
+        </form>
+        <div id="user-list" class="list"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

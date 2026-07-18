@@ -1,0 +1,23 @@
+[
+  {
+    "id": "router-001",
+    "name": "Edge-R1",
+    "host": "10.0.0.1",
+    "vendor": "FRRouting",
+    "status": "connected"
+  },
+  {
+    "id": "router-002",
+    "name": "Core-R1",
+    "host": "10.0.0.2",
+    "vendor": "Cisco",
+    "status": "standby"
+  },
+  {
+    "id": "MSR-1",
+    "name": "US-West-MSR1",
+    "host": "208.64.121.3/31",
+    "vendor": "FRRouting",
+    "status": "unknown"
+  }
+]
