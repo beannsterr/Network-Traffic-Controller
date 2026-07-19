@@ -3,6 +3,11 @@
 
 This project is a lightweight prototype for managing BGP route steering, mitigation actions, and role-based workflow logging.
 
+<img width="1693" height="913" alt="TC3" src="https://github.com/user-attachments/assets/eeed6a46-f89a-48d4-85e0-fad5404ad432" />
+
+<img width="1639" height="897" alt="TC4" src="https://github.com/user-attachments/assets/8e235c46-78b2-4afb-b138-e9488835007f" />
+
+
 ## How to access the site
 
 ### 1. Start the backend
